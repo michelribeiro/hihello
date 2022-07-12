@@ -9,11 +9,11 @@
 
 <h3>Evaluation Criteria:</h3>
 
-[x] You will be evaluated on the following criteria:
-[x] Design/UI/UX
-[x] Functional accuracy and completeness
-[x] Code architecture/structure, style, and readability
-[x] Code organization and modularity
+- [x] You will be evaluated on the following criteria:
+- [x] Design/UI/UX
+- [x] Functional accuracy and completeness
+- [x] Code architecture/structure, style, and readability
+- [x] Code organization and modularity
 
 
 <p>Development for: Michel Ribeiro</p>
