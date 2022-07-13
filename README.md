@@ -16,7 +16,7 @@
 - [x] Code organization and modularity
 
 
-<p>Development for: Michel Ribeiro</p>
+<p>Developed by: Michel Ribeiro</p>
 
 [Published in gh-page, click here](https://michelribeiro.github.io/hihello/)
 
