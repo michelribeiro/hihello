@@ -10,13 +10,13 @@ interface CalculatorProps {
   children: ReactNode;
 }
 
-interface CalculatorContextProps {
+interface CalculatorContextData {
   resultCalc: number
   handleNumber1: (number: Number) => void
   handleNumber2: (number: Number) => void
 }
 
-const CalculatorHook = createContext<CalculatorContextProps>({} as CalculatorContextProps)
+const CalculatorContext = createContext<CalculatorContextData>({} as CalculatorContextData)
 
 export function CalculatorProvider({ children }: CalculatorProps): JSX.Element {
   const [resultCalc, setResultCalc] = useState(0)
@@ -38,13 +38,13 @@ export function CalculatorProvider({ children }: CalculatorProps): JSX.Element {
   }, [resultCalc, handleNumber1, handleNumber2]);
 
   return (
-    <CalculatorHook.Provider value={memorizeValue}>
+    <CalculatorContext.Provider value={memorizeValue}>
       {children}
-    </CalculatorHook.Provider>
+    </CalculatorContext.Provider>
   )
 }
 
-export function useCalc(): CalculatorContextProps {
-  const context = useContext(CalculatorHook)
+export function useCalc(): CalculatorContextData {
+  const context = useContext(CalculatorContext)
   return context
 }

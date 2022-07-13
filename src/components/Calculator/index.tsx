@@ -1,11 +1,16 @@
 import React from 'react';
+import { useCalc } from 'hook/calculator';
 import { Button } from '../Button';
 import { Wrapper } from './styles';
 
 export function Calculator() {
+  const { resultCalc } = useCalc()
   return (
     <Wrapper>
       <div className="btns">
+        <div className="screenNumber">
+          {resultCalc}
+        </div>
         <Button cNames="btn btnac" item={"AC"} />
         <Button cNames="btn btnMaisMenos" item={"+/-"} />
         <Button cNames="btn btnPercent" item={"%"} />

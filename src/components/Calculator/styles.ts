@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   background: var(--black);
   border-radius: 1em;
-  display: inline-flex;
+  /* display: inline-flex; */
   padding: 1rem;
   margin: 1rem auto;
 
@@ -11,6 +11,7 @@ export const Wrapper = styled.div`
     display: grid;
     gap: 1rem;
     grid-template-areas:
+      "screenNumber screenNumber screenNumber screenNumber"
       "btnac btnMaisMenos btnPercent btnDiv"
       "btn7 btn8 btn9 btnx"
       "btn4 btn5 btn6 btnLess"
@@ -23,19 +24,52 @@ export const Wrapper = styled.div`
     color: var(--white);
   }
 
+  .screenNumber {
+    grid-area: screenNumber;
+    color: var(--white);
+    padding-bottom: 1rem;
+    height: 6rem;
+    font-size: 3rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+
   .btnac {
     grid-area: btnac;
+    font-size: 1rem;
+    background: var(--grey-50);
+    color: var(--black);
   }
   .btnMaisMenos {
     grid-area: btnMaisMenos;
+    background: var(--grey-50);
+    color: var(--black);
   }
   .btnPercent {
     grid-area: btnPercent;
+    background: var(--grey-50);
+    color: var(--black);
   }
   .btnDiv {
     grid-area: btnDiv;
     background-color: var(--orange);
     color: var(--white);
+    transform: rotate(72deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &::before {
+      content: ".";
+      color: var(--white);
+      margin-top: -15px;
+    }
+    &::after {
+      content: ".";
+      color: var(--white);
+      margin-top: -9px;
+    }
   }
 
   .btn7 {
