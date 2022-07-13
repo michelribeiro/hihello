@@ -17,3 +17,5 @@
 
 
 <p>Development for: Michel Ribeiro</p>
+
+![Calculator](/calculator.png)
