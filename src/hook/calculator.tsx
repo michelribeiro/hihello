@@ -11,31 +11,102 @@ interface CalculatorProps {
 }
 
 interface CalculatorContextData {
-  resultCalc: number
-  handleNumber1: (number: Number) => void
-  handleNumber2: (number: Number) => void
+  stateActual: string
+  handleItem: (number: string) => void
+  clearCalculator: () => void
+  calcPercent: () => void
+  handleChangeSignal: () => void
+  handleOperador: (kind: string) => void
+  calculatorFinal: () => void
 }
 
 const CalculatorContext = createContext<CalculatorContextData>({} as CalculatorContextData)
 
 export function CalculatorProvider({ children }: CalculatorProps): JSX.Element {
-  const [resultCalc, setResultCalc] = useState(0)
-  const [number1, setNumber1] = useState(0)
-  const [number2, setNumber2] = useState(0)
+  const [stateActual, setStateActual] = useState("0")
+  const [kindOperator, setKindOperator] = useState<string>("")
+  const [number1, setNumber1] = useState("")
 
-  const handleNumber1 = useCallback(async (number: Number) => {
-    setNumber1(Number(number))
+  const handleItem = useCallback(async (val: string) => {
+    if (stateActual.length < 9) {
+    if (stateActual === "0") {
+      setStateActual(val)
+    } else {
+      setStateActual(stateActual + val)
+      }
+    }
+  }, [stateActual]);
+
+
+  const clearCalculator = useCallback(async () => {
+    setStateActual("0")
   }, []);
 
-  const handleNumber2 = useCallback(async (number: Number) => {
-    setNumber2(Number(number))
-  }, []);
+  const calcPercent = useCallback(async () => {
+    const percent = Number(stateActual) / 100;
+    setStateActual(String(percent))
+  },[stateActual])
+
+  const handleChangeSignal = useCallback(async () => {
+    if (Number(stateActual) > 0) {
+      setStateActual(`- ${stateActual}`)
+    } else {
+      const convertion = Math.abs(Number(stateActual))
+      setStateActual(String(convertion))
+    }
+  }, [stateActual]);
+
+  const handleOperador = useCallback(async (kind: string) => {
+    setKindOperator(kind)
+    setNumber1(stateActual)
+    setStateActual("0")
+  },[stateActual]);
+
+  const calculatorFinal = useCallback(async () => {
+    
+    const calc = Number(number1) + kindOperator + Number(stateActual)
+    switch (kindOperator) {
+      case "/":
+        const div = Number(number1)/Number(stateActual)
+        console.log('divisao => ', div);
+        
+        setStateActual(String(div))
+        break;
+      case "+":
+        setStateActual(String(Number(number1)+Number(stateActual)))
+        break;
+      case "-":
+        setStateActual(String(Number(number1)-Number(stateActual)))
+        break;
+      case "*":
+        setStateActual(String(Number(number1)*Number(stateActual)))
+        break;
+    }
+    
+    
+    
+  },[kindOperator, number1, stateActual]);
+
 
   const memorizeValue = useMemo(() => {
     return {
-      resultCalc, handleNumber1, handleNumber2
+      stateActual,
+      handleItem,
+      clearCalculator,
+      calcPercent,
+      handleChangeSignal,
+      handleOperador,
+      calculatorFinal
     };
-  }, [resultCalc, handleNumber1, handleNumber2]);
+  }, [
+    stateActual,
+    handleItem,
+    clearCalculator,
+    calcPercent,
+    handleChangeSignal,
+    handleOperador,
+    calculatorFinal
+  ]);
 
   return (
     <CalculatorContext.Provider value={memorizeValue}>
