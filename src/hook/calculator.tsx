@@ -49,9 +49,9 @@ export function CalculatorProvider({ children }: CalculatorProps): JSX.Element {
 
   const handleChangeSignal = useCallback(async () => {
     if (Number(stateActual) > 0) {
-      setStateActual(`- ${stateActual}`)
+      setStateActual(`-${stateActual}`)
     } else {
-      const convertion = Math.abs(Number(stateActual))
+      const convertion = Math.abs(parseFloat(stateActual))
       setStateActual(String(convertion))
     }
   }, [stateActual]);
