@@ -63,13 +63,9 @@ export function CalculatorProvider({ children }: CalculatorProps): JSX.Element {
   },[stateActual]);
 
   const calculatorFinal = useCallback(async () => {
-    
-    const calc = Number(number1) + kindOperator + Number(stateActual)
     switch (kindOperator) {
       case "/":
         const div = Number(number1)/Number(stateActual)
-        console.log('divisao => ', div);
-        
         setStateActual(String(div))
         break;
       case "+":
@@ -82,9 +78,6 @@ export function CalculatorProvider({ children }: CalculatorProps): JSX.Element {
         setStateActual(String(Number(number1)*Number(stateActual)))
         break;
     }
-    
-    
-    
   },[kindOperator, number1, stateActual]);
 
 
