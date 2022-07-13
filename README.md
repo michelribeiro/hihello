@@ -18,4 +18,4 @@
 
 <p>Development for: Michel Ribeiro</p>
 
-<img src="calculator.png" alt="Calculator" />
+<img src="calculator.png" alt="Calculator" width="150" />
