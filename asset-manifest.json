@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/hihello/static/js/main.bcc14197.js",
+    "index.html": "/hihello/index.html",
+    "main.bcc14197.js.map": "/hihello/static/js/main.bcc14197.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.bcc14197.js"
+  ]
+}
