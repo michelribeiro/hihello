@@ -1,11 +1,14 @@
 import React from 'react';
+import { Calculator } from './components/Calculator';
+import GlobalStyles from './styles/global';
 
 function App() {
   return (
-    <div className="App">
-      Hello calculator
-    </div>
-  );
+    <>
+     <GlobalStyles />
+     <Calculator />
+    </>
+  )
 }
 
 export default App;
